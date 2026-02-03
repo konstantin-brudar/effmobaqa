@@ -1,7 +1,9 @@
 package ru.effmob.aqa.tests;
 
+import io.qameta.allure.Description;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,6 +16,8 @@ import java.time.Duration;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+
+@DisplayName("Тестирование авторизации")
 public class LoginTest {
     private WebDriver driver;
     private LoginPage loginPage;
@@ -37,6 +41,8 @@ public class LoginTest {
     }
 
     @Test
+    @DisplayName("Успешный логин")
+    @Description("Проверяет успешную авторизацию с корректными учетными данными")
     void successfulLogin() {
         loginPage.enterUsername("standard_user");
         loginPage.enterPassword("secret_sauce");
@@ -45,6 +51,8 @@ public class LoginTest {
     }
 
     @Test
+    @DisplayName("Логин с неверным паролем")
+    @Description("Тест сценария с неверным паролем. Ожидается сообщение об ошибке авторизации.")
     void loginWithWrongPassword() {
         loginPage.enterUsername("standard_user");
         loginPage.enterPassword("wrong_password");
@@ -53,6 +61,8 @@ public class LoginTest {
     }
 
     @Test
+    @DisplayName("Логин заблокированного пользователя")
+    @Description("Проверяет поведение для locked_out_user")
     void lockedOutUserLogin() {
         loginPage.enterUsername("locked_out_user");
         loginPage.enterPassword("secret_sauce");
@@ -61,12 +71,16 @@ public class LoginTest {
     }
 
     @Test
+    @DisplayName("Логин с пустыми полями")
+    @Description("Валидация обязательных полей формы логина")
     void loginWithEmptyFields() {
         loginPage.clickLoginButton();
         assertEquals("Epic sadface: Username is required", loginPage.getErrorMessage());
     }
 
     @Test
+    @DisplayName("Логин пользователя performance_glitch_user")
+    @Description("Проверяет авторизацию пользователя с медленной производительностью")
     void performanceGlitchUserLogin() {
         loginPage.enterUsername("performance_glitch_user");
         loginPage.enterPassword("secret_sauce");

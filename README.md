@@ -41,5 +41,5 @@
 ## Сборка и запуск
 
 ```
-$ mvn clean compile test
+$ mvn clean compile test allure:serve
 ```
