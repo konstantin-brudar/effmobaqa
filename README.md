@@ -41,6 +41,5 @@
 ## Сборка и запуск
 
 ```
-$ mvn clean package
-$ java -jar target/effmobaqa-1.0-SNAPSHOT.jar 
+$ mvn clean compile test
 ```
