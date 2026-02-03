@@ -37,3 +37,10 @@
 4. Должно быть несколько коммитов с готовыми блоками кода
 5. Создайте Pull Request из ветки dev в master
 6. Предоставьте ссылку на репозиторий / pull request  для проверки
+
+## Сборка и запуск
+
+```
+$ mvn clean package
+$ java -jar target/effmobaqa-1.0-SNAPSHOT.jar 
+```
